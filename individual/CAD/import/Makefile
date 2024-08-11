@@ -6,7 +6,7 @@
 # =========================================
 
 indir := input
-output := output/cad.parquet
+output := output/reference.parquet
 
 PHONY = clean all
 

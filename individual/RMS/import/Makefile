@@ -6,7 +6,7 @@
 # =========================================
 
 indir := input
-output := output/rms.parquet
+output := output/reference.parquet
 
 PHONY = clean all
 

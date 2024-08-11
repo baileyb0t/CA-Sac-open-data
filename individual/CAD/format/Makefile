@@ -5,7 +5,7 @@
 # Copyright:   2024, HRDAG, GPL v2 or later
 # =========================================
 
-input := ../import/output/cad.parquet
+input := ../import/output/reference.parquet
 hand := hand/rules.yml
 output := output/cad.parquet
 
