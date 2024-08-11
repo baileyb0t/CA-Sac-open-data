@@ -1,63 +1,70 @@
 # columns with no missing values
 no_missing:
-    - record_id
-    - call_type
-    - description
-    - report_created
-    - beat
-    - day_of_week
-    - occurrence_date_pt
-    - received_date_pt
-    - objectid
     - fileid
-    - fileyear
+    - filename
+    - fileyears
+    - go_num
+    - ibr_code
+    - location
+    - occ_date
+    - occ_time
+    - offense_d
+    - rep_date
+    - sort_order
 
 # columns that have missing records but a completion rate greater than or equal to specified float
 completion_rate:
-    location: 0.87
-    police_district: 0.99
-    cleared_by: 0.99
-    cleared_by_desc: 0.99
-    dispatch_date_pt: 0.6
-    enroute_date_pt: 0.6
-    at_scene_date_pt: 0.6
-    clear_date_pt: 0.99
-    x: 0.87
-    y: 0.87
+    age: 0.813
+    district: 0.999
+    ethnicity_d: 0.969
+    operational_code_d: 0.99
+    race_d: 0.98
+    role_d: 0.99
+    sex_d: 0.99
+    zone: 0.99
 
 # number of unique values in columns that are not expected to change significantly overtime
 # these fields may be generated from a drop-down menu
 nunique:
-    call_type: 231
-    description: 229
-    report_created: 2
-    police_district: 15
-    beat: 37
-    day_of_week: 7
-    cleared_by: 12
-    cleared_by_desc: 12
-    fileid: 6
-    fileyear: 6
+    age: 259
+    district: 13
+    ethnicity_d: 27
+    fileid: 10
+    filename: 10
+    fileyears: 10
+    go_num: 1476942
+    ibr_code: 62
+    location: 41587
+    occ_date: 7457
+    occ_time: 1440
+    offense_d: 2206
+    operational_code_d: 34
+    race_d: 21
+    rep_date: 7478
+    role_d: 71
+    sex_d: 8
+    sort_order: 1
+    zone: 50
 
 unique_rate:
-    record_id: 1.00
-    call_type: 0.00
-    description: 0.00
-    report_created: 0.00
-    location: 0.02
-    police_district: 0.00
-    beat: 0.00
-    day_of_week: 0.00
-    cleared_by: 0.00
-    cleared_by_desc: 0.00
-    occurrence_date_pt: 0.68
-    received_date_pt: 0.68
-    dispatch_date_pt: 0.99
-    enroute_date_pt: 0.99
-    at_scene_date_pt: 0.99
-    clear_date_pt: 0.68
-    objectid: 0.20
-    x: 0.019
-    y: 0.019
+    age: 0.00
+    district: 0.00
+    ethnicity_d: 0.00
     fileid: 0.00
-    fileyear: 0.00
+    filename: 0.00
+    fileyears: 0.00
+    go_num: 0.44
+    ibr_code: 0.00
+    location: 0.01
+    occ_date: 0.002
+    occ_time: 0.000
+    offense_d: 0.00
+    operational_code_d: 0.00
+    race_d: 0.00
+    rep_date: 0.00
+    role_d: 0.00
+    sex_d: 0.00
+    sort_order: 0.00
+    zone: 0.00
+
+# done.

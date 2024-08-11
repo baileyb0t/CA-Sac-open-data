@@ -99,8 +99,6 @@ def checkasserts(df, rules):
     or something has gone wrong in the processing steps.
     """
     logger.info("verifying data")
-    for year in range(2004, 2025):
-        assert df.fileyears.str.contains(str(year)).any()
     for col in rules['no_missing']:
         found = df[col].isna().sum()
         assert found == 0, \
@@ -128,8 +126,31 @@ def readconcat(ref, rules):
     logger.info("reading in data and formatting to table")
     dfs = [readfile(ref.iloc[i]) for i in range(ref.shape[0])]
     full = pd.concat(dfs)
-    #checkasserts(df=full, rules=rules)
+    checkasserts(df=full, rules=rules)
     return full
+
+
+def formattypes(df):
+    """
+    Be kind to the analysts and respect the parquet format.
+    Format data to the appropriate type.
+    """
+    copy = df.copy()
+    datecols = [col for col in copy.columns if ('date' in col) | ('time' in col)]
+    for col in datecols:
+        logger.info(f"formatting to datetime:\t{col}")
+        copy[col] = copy[col].astype('datetime64[ns]')
+    for year in range(2004, 2025):
+        if year == 2023:
+            logger.info(f"checking for {year} in `occ_date` years")
+            assert year in df.occ_date.dt.year
+        else:
+            logger.info(f"checking for {year} in `fileyears`")
+            assert df.fileyears.str.contains(str(year)).any()
+    copy.district = copy.district.fillna("<BLANK>").astype(str)
+    copy.zone = copy.zone.fillna("<BLANK>").astype(str)
+    copy.ibr_code = copy.ibr_code.fillna("<BLANK>").astype(str)
+    return copy
 # }}}
 
 # --- main --- {{{
@@ -143,11 +164,9 @@ if __name__ == '__main__':
 
     ref.filepath = ref.filepath.apply(fixpath)
     data = readconcat(ref=ref, rules=rules)
+    data = formattypes(data)
 
     logger.info("writing formatted data")
-    data.district = data.district.astype(str)
-    data.zone = data.zone.astype(str)
-    data.ibr_code = data.ibr_code.astype(str)
     data.to_parquet(args.output)
 
     logger.info('done')
