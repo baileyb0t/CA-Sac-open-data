@@ -99,3 +99,6 @@ Since the RMS data is not publicly available, I presume I can only find a data d
 ---
 
 I have also saved PDF screenshots of the PRA portal detailing the exchange between myself and SacPD, should the portal or those requests become unavailable.
+
+# Author
+The data sourcing and processing was completed by Bailey Passmore, Data Scientist at the Human Rights Data Analysis Group. If you have any questions or information about this data to share, please contact bailey@hrdag.org.
